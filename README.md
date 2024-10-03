@@ -1,6 +1,5 @@
 # ASR_Benchmark
-ASR Benchmark models on your dataset
-# ASR Benchmarking Repository
+Benchmark ARS models on your dataset
 
 ## Setup
 
@@ -23,4 +22,4 @@ ASR Benchmark models on your dataset
    python scripts/evaluate.py configs/config.yaml
    ```
 
-The results will be logged in the `logs` directory.
+The logs and predictions will be logged in the `logs` directory and `predictions` directroy respectively.
