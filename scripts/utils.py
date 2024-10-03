@@ -68,7 +68,7 @@ def evaluate_huggingface_model(model_name, model_id, dataset, audio_dir, batch_s
     for i in tqdm(range(0, num_samples, batch_size), desc=f"Processing {model_name}"):
         batch = dataset.select(range(i, min(i + batch_size, num_samples)))
         audio_files = batch['audio_files']
-        transcriptions = batch['transcription']
+        transcriptions = batch['transcriptions']
         
         inputs = []
         for file_path in audio_files:
@@ -100,7 +100,7 @@ def evaluate_nemo_model(model_name, model_info, dataset, audio_dir, batch_size, 
     wav_files = _get_wav_files_from_dataset(dataset, audio_dir)
     predicted_texts = asr_model.transcribe(paths2audio_files=wav_files, batch_size=batch_size)
     
-    return predicted_texts, dataset['transcription']
+    return predicted_texts, dataset['transcriptions']
 
 def _get_wav_files_from_dataset(dataset, audio_dir):
     audio_files = dataset['audio_files']

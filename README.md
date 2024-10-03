@@ -19,7 +19,7 @@ Benchmark ARS models on your dataset
 1. Create a configuration file (`configs/config.yaml`).
 2. Run the evaluation:
    ```bash
-   python scripts/evaluate.py configs/config.yaml
+   python scripts/evaluate.py -c configs/config.yaml
    ```
 
-The logs and predictions will be logged in the `logs` directory and `predictions` directroy respectively.
+The predictions will be saved in the `predictions` directroy.
