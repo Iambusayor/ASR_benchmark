@@ -1,0 +1,9 @@
+transformers
+datasets
+torch
+librosa
+jiwer
+nemo_toolkit[all]
+tqdm
+pyyaml
+huggingface-hub==0.23.2

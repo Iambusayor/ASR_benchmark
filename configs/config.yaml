@@ -1,0 +1,45 @@
+models:
+  whisper-large:
+    model_id: openai/whisper-large-v3
+    framework: huggingface
+  canary:
+    model_id: nvidia/canary-1b
+    framework: nemo
+    model_class: EncDecMultiTaskModel
+  xlsr-53:
+    model_id: jonatasgrosman/wav2vec2-large-xlsr-53-english
+    framework: huggingface
+  mmms-1b:
+    model_id: facebook/mms-1b-all
+    framework: huggingface
+  whisper-medium:
+    model_id: openai/whisper-medium
+    framework: huggingface
+  whisper-small:
+    model_id: openai/whisper-small
+    framework: huggingface
+  parekeet-rnnt:
+    model_id: nvidia/parakeet-rnnt-1.1b
+    framework: nemo
+    model_class: EncDecRNNTBPEModel
+  parakeet-tdt_ctc-110m:
+    model_id: nvidia/parakeet-tdt_ctc-110m
+    framework: nemo
+    model_class: ASRModel
+  parakeet-rnnt-0.6b:
+    model_id: nvidia/parakeet-rnnt-0.6b
+    framework: nemo
+    model_class: EncDecRNNTBPEModel
+  whisper-distil-large-v3:
+    model_id: distil-whisper/distil-large-v3
+    framework: huggingface
+  
+
+data:
+  path: ./data/Clean_FS_eval_transcription.csv
+  audio_dir: ./audio
+
+hyperparameters:
+  batch_size: 32
+  beam_size: 1
+  sr: 16000
