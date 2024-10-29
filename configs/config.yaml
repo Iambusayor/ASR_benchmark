@@ -1,23 +1,23 @@
 models:
-  # whisper-large:
-  #   model_id: openai/whisper-large-v3
-  #   framework: huggingface
-  # canary:
-  #   model_id: nvidia/canary-1b
-  #   framework: nemo
-  #   model_class: EncDecMultiTaskModel
-  # xlsr-53:
-  #   model_id: jonatasgrosman/wav2vec2-large-xlsr-53-english
-  #   framework: huggingface
-  # mmms-1b:
-  #   model_id: facebook/mms-1b-all
-  #   framework: huggingface
-  # whisper-medium:
-  #   model_id: openai/whisper-medium
-  #   framework: huggingface
-  # whisper-small:
-  #   model_id: openai/whisper-small
-  #   framework: huggingface
+  whisper-large:
+    model_id: openai/whisper-large-v3
+    framework: huggingface
+  canary:
+    model_id: nvidia/canary-1b
+    framework: nemo
+    model_class: EncDecMultiTaskModel
+  xlsr-53:
+    model_id: jonatasgrosman/wav2vec2-large-xlsr-53-english
+    framework: huggingface
+  mmms-1b:
+    model_id: facebook/mms-1b-all
+    framework: huggingface
+  whisper-medium:
+    model_id: openai/whisper-medium
+    framework: huggingface
+  whisper-small:
+    model_id: openai/whisper-small
+    framework: huggingface
   parekeet-rnnt:
     model_id: nvidia/parakeet-rnnt-1.1b
     framework: nemo
