@@ -1,23 +1,23 @@
 models:
-  whisper-large:
-    model_id: openai/whisper-large-v3
-    framework: huggingface
-  canary:
-    model_id: nvidia/canary-1b
-    framework: nemo
-    model_class: EncDecMultiTaskModel
-  xlsr-53:
-    model_id: jonatasgrosman/wav2vec2-large-xlsr-53-english
-    framework: huggingface
-  mmms-1b:
-    model_id: facebook/mms-1b-all
-    framework: huggingface
-  whisper-medium:
-    model_id: openai/whisper-medium
-    framework: huggingface
-  whisper-small:
-    model_id: openai/whisper-small
-    framework: huggingface
+  # whisper-large:
+  #   model_id: openai/whisper-large-v3
+  #   framework: huggingface
+  # canary:
+  #   model_id: nvidia/canary-1b
+  #   framework: nemo
+  #   model_class: EncDecMultiTaskModel
+  # xlsr-53:
+  #   model_id: jonatasgrosman/wav2vec2-large-xlsr-53-english
+  #   framework: huggingface
+  # mmms-1b:
+  #   model_id: facebook/mms-1b-all
+  #   framework: huggingface
+  # whisper-medium:
+  #   model_id: openai/whisper-medium
+  #   framework: huggingface
+  # whisper-small:
+  #   model_id: openai/whisper-small
+  #   framework: huggingface
   parekeet-rnnt:
     model_id: nvidia/parakeet-rnnt-1.1b
     framework: nemo
@@ -36,10 +36,10 @@ models:
   
 
 data:
-  path: ./data/Clean_FS_eval_transcription.csv
-  audio_dir: ./audio
+  path: Clean_FS_eval_transcriptions.csv
+  audio_dir: content/drive/MyDrive/fountainstream/ASR_benchmark/
 
 hyperparameters:
-  batch_size: 32
+  batch_size: 64
   beam_size: 1
   sr: 16000
