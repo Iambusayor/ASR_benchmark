@@ -62,7 +62,7 @@ def main():
 
     dataset = load_data(data_path)
 
-    wer_score_csv = "logs/asr_model_evaluation_log.csv"
+    wer_score_csv = "asr_model_evaluation_log.csv"
 
     for model_name, model_info in models.items():
         evaluate_model(

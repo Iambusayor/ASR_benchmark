@@ -17,7 +17,7 @@ def load_data(data_path) -> datasets.Dataset:
     """load evaluation dataset from a CSV file."""
     logging.info("Loading dataset...")
     dataset = load_dataset("csv", data_files={"test": data_path})
-    logging.info(f"Dataset loaded with {len(dataset["test"])} samples.")
+    logging.info(f"Dataset loaded with {len(dataset['test'])} samples.")
     return dataset["test"]
 
 def write_predictions_to_csv(model_name, predictions, references, csv_file) -> csv:
@@ -47,8 +47,8 @@ def log_metrics_to_csv(model_name, wer, cer, timestamp, inference_time, max_memo
             "WER": wer,
             "CER": cer,
             "timestamp": timestamp,
-            inference_time: inference_time,
-            max_memory_allocated: max_memory_allocated
+            "inference_time": inference_time,
+            "max_memory_allocated": max_memory_allocated
         })
     logging.info(f"Model {model_name} WER and CER logged to {wer_score_csv}")
 
@@ -86,7 +86,7 @@ def evaluate_huggingface_model(model_name, model_id, dataset, audio_dir, batch_s
 def evaluate_nemo_model(model_name, model_info, dataset, audio_dir, batch_size, beam_size=1):
     """Evaluates a NeMo ASR model."""
     model_id = model_info['model_id']
-    model_class_name = model_info.get('model_class', 'EncDecMultiTaskModel')  # Default to ASRModel if not specified
+    model_class_name = model_info.get('model_class', 'EncDecMultiTaskModel')  # Default to EncDecMultiTaskModel if not specified
     model_class = getattr(nemo_asr.models, model_class_name)
 
     logging.info(f"Evaluating NeMo model: {model_name} using class {model_class_name}")
@@ -99,6 +99,9 @@ def evaluate_nemo_model(model_name, model_info, dataset, audio_dir, batch_size, 
 
     wav_files = _get_wav_files_from_dataset(dataset, audio_dir)
     predicted_texts = asr_model.transcribe(paths2audio_files=wav_files, batch_size=batch_size)
+
+    if isinstance(predicted_texts, tuple):
+        predicted_texts = predicted_texts[0]
     
     return predicted_texts, dataset['transcriptions']
 
@@ -145,7 +148,7 @@ def evaluate_model(model_name: str, model_info: str, dataset: datasets.Dataset, 
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     os.makedirs("predictions", exist_ok=True)
     predictions_file = f"predictions/{model_name}--{timestamp}_predictions.csv"
-    write_predictions_to_csv(model_name=model_name, predictions=predictions, references=references, predictions_file=predictions_file)
+    write_predictions_to_csv(model_name=model_name, predictions=predictions, references=references, csv_file=predictions_file)
 
     # Log WER and CER to the general CSV file
     log_metrics_to_csv(model_name=model_name, wer=wer, cer=cer, timestamp=timestamp, inference_time=inference_tme, max_memory_allocated=max_memory_allocated, wer_score_csv=wer_score_csv)
